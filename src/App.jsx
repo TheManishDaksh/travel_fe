@@ -1,12 +1,14 @@
-
 import './App.css'
+import HotelCard from './components/hotelCard/HotelCard'
+import Navbar from './components/navbar/Navbar'
 
 function App() {
 
   return (
-    <>
-     TravelO
-    </>
+    <div>
+     <Navbar/> 
+     <HotelCard/>
+    </div>
   )
 }
 
