@@ -1,13 +1,11 @@
 import './App.css'
-import HotelCard from './components/hotelCard/HotelCard'
-import Navbar from './components/navbar/Navbar'
+import HomePage from './pages/HomePage'
 
 function App() {
 
   return (
     <div>
-     <Navbar/> 
-     <HotelCard/>
+    <HomePage/>
     </div>
   )
 }
