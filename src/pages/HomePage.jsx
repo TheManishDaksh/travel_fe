@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import HotelCard from '../components/hotelCard/HotelCard'
 import Navbar from '../components/navbar/Navbar'
 import axios from "axios"
+import Category from '../components/category/category'
 
 function HomePage() {
 
@@ -18,11 +19,11 @@ function HomePage() {
     },[])
   return (
     <div> 
-        <Navbar/>
-        <main className='flex float-start flex-col'>
+        <Navbar className="sticky"/>
+        <Category/>
+        <main className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 p-5 pl-9 overflow-y-auto h-screen '>
         {
-            hotels.map((hotel)=> <HotelCard key={hotel.id}
-            hotel = {hotel}
+            hotels.map((hotel)=> <HotelCard key={hotel._id}
             name={hotel.name}
             image={hotel.image}
             address={hotel.address}
@@ -33,6 +34,8 @@ function HomePage() {
         )
         }
       </main>
+      <div className='text-center p-4 font-bold text-lg ' 
+      > You have seen it all, thank you for visiting </div>
     </div>
   )
 }

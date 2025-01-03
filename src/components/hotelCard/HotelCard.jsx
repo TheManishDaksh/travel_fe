@@ -3,7 +3,7 @@ import React from 'react'
 function HotelCard({name, image, address, state, rating, price}) {
   return (
         
-            <div className='relative rounded-lg border-solid border-2 border-slate-300 text-slate-600 m-2 w-64 bg-white shadow-2xl '> 
+            <div className='relative rounded-lg border-solid border-2 border-slate-300 text-slate-600  w-64 bg-white shadow-2xl hover:scale-110 transition duration-200 '> 
             <div>
                 <img src={image} alt={name} style={{width:"100%", height:"180px"}}/>
             </div>
