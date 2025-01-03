@@ -1,10 +1,19 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom"
 
-function HotelCard({name, image, address, state, rating, price}) {
+function HotelCard({_id, name, image, address, state, rating, price}) {
+    
+    const navigate = useNavigate();
+
+    function handleSingleHotel(){
+        console.log(_id);
+        
+        navigate(`/hotels/${name}/${address}/${_id}/reserve`)
+    }
   return (
         
             <div className='relative rounded-lg border-solid border-2 border-slate-300 text-slate-600  w-64 bg-white shadow-2xl hover:scale-110 transition duration-200 '> 
-            <div>
+            <div onClick={handleSingleHotel}>
                 <img src={image} alt={name} style={{width:"100%", height:"180px"}}/>
             </div>
             <div className='flex justify-between px-2 pt-2'>

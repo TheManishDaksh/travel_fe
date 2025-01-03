@@ -26,6 +26,8 @@ function HomePage() {
         <main className='grid grid-cols-4 gap-7 p-5 pl-9 overflow-y-auto  '>
         {
             hotels.map((hotel)=> <HotelCard key={hotel._id}
+            hotel={hotel}
+            _id={hotel._id}
             name={hotel.name}
             image={hotel.image}
             address={hotel.address}
