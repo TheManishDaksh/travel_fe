@@ -13,7 +13,7 @@ function SingleHotel(){
         (async()=>{
             try{
                 const {data} = await axios.get(`http://localhost:3000/api/hotels/${id}`)
-                setSingleHotel(data)
+                setSingleHotel(data)    
             }catch(error){
                 console.log(error);
             }
@@ -24,9 +24,9 @@ function SingleHotel(){
        <div>
         <Navbar/>
         <main>
-            <HotelImages 
-             singleHotel= {singleHotel}
-            />
+                <HotelImages 
+                singleHotel= {singleHotel}
+                />
         </main>
        </div>
     )
