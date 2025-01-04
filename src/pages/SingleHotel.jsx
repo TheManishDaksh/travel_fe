@@ -3,6 +3,9 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../components/navbar/Navbar";
 import HotelImages from "../components/HotelImages";
+import { HotelDetails } from "../components/HotelDetails";
+import { FinalPrice } from "../components/FinalPrice";
+
 
 
 function SingleHotel(){
@@ -21,13 +24,18 @@ function SingleHotel(){
     },[id])
     const {name, state} = singleHotel;
     return (
-       <div>
+       <div className="bg-customWhite">
         <Navbar/>
-        <main>
+        <main >
                 <HotelImages 
                 singleHotel= {singleHotel}
                 />
+                
         </main>
+        <div className="flex justify-between px-20 pb-5">
+        <HotelDetails singleHotel={singleHotel} />
+        <FinalPrice singleHotel={singleHotel} />
+        </div>
        </div>
     )
 }
