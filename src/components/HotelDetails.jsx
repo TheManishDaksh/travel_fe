@@ -88,9 +88,7 @@ export const HotelDetails = ({ singleHotel }) => {
             <span class="material-symbols-outlined">apps</span>
             <span>{healthAndSafety[1]}</span>
             </span>
-          </div>
-          
+          </div>          
       </div>
-    
   );
 };
