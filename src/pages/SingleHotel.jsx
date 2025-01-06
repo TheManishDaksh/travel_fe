@@ -1,12 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "../components/Navbar";
 import HotelImages from "../components/HotelImages";
 import { HotelDetails } from "../components/HotelDetails";
 import { FinalPrice } from "../components/FinalPrice";
-
-
 
 function SingleHotel(){
     const {id} = useParams();

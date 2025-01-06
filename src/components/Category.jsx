@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useCategory } from "../../context/categoryContext"
+import { useCategory } from "../context/categoryContext"
 
 function Category(){
     

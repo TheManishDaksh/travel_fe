@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        customWhite : '#fafafa'
+        customWhite : '#fafafa',
+        overlay : "rgba(0, 0, 0, 0.3)",
+        primary : "rgb(249 115 22)"
       },
     },
   },

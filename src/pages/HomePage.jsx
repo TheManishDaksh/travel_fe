@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import HotelCard from '../components/hotelCard/HotelCard'
-import Navbar from '../components/navbar/Navbar'
+import HotelCard from '../components/HotelCard'
+import Navbar from '../components/Navbar'
 import axios from "axios"
-import Category from '../components/category/category'
+import Category from '../components/Category'
 import { useCategory } from '../context/categoryContext'
+import { useDateContext } from '../context/DateContext'
+import { Search } from '../components/Search'
 
 function HomePage() {
 
     const [hotels, setHotels] = useState([]);
     const {hotelCategory} = useCategory();
+    const {isSearchModalOpen} = useDateContext();
     useEffect(()=>{
         (async ()=>{
             try{
@@ -38,6 +41,7 @@ function HomePage() {
         )
         }
       </main>
+      {isSearchModalOpen && <Search/>}
       <div className='text-center p-4 font-bold text-lg ' 
       > You have seen it all, thank you for visiting </div>
     </div>
