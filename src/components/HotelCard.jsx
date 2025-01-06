@@ -6,13 +6,12 @@ function HotelCard({_id, name, image, address, state, rating, price}) {
     const navigate = useNavigate();
 
     function handleSingleHotel(){
-        console.log(_id);
         
         navigate(`/hotels/${name}/${address}/${_id}/reserve`)
     }
   return (
         
-            <div className='relative rounded-lg border-solid border-2 border-slate-300 text-slate-600  w-64 bg-white shadow-2xl hover:scale-110 transition duration-200 '> 
+            <div className='relative rounded-lg border-solid border-2 border-slate-300 text-slate-600  w-64 bg-white shadow-2xl hover:scale-110 transition duration-200 cursor-pointer'> 
             <div onClick={handleSingleHotel}>
                 <img src={image} alt={name} style={{width:"100%", height:"180px"}}/>
             </div>

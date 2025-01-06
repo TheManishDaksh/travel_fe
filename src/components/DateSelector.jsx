@@ -14,6 +14,12 @@ export const DateSelector = ({checkInType}) =>{
         })
     }
 
+    function handleFocusDate(){
+        dateDispatch({
+            type : "DATE_FOCUS"
+        })
+    }
+
     return(
         <DatePicker 
             selected={checkInType === "in"? checkIn : checkOut}
@@ -21,6 +27,7 @@ export const DateSelector = ({checkInType}) =>{
             dateFormat='dd/MM/yyyy'
             placeholderText="Add date"
             closeOnScroll ={true}
+            onFocus={handleFocusDate}
             className="border-hidden focus:outline-none "
         />
     )

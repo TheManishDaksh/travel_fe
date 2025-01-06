@@ -78,16 +78,16 @@ export const HotelDetails = ({ singleHotel }) => {
             </span>
           </div>
         </div>
-          <div >
+        <div >
             <p className="py-3">Health And Safety</p>
             <span className="flex items-center gap-2 py-2">
-            <span class="material-symbols-outlined">apps</span>
-            <span>{healthAndSafety[0]}</span>
+            <span>{healthAndSafety && healthAndSafety.map((health)=>(
+              <div className="items-center flex gap-2 py-2">
+                <span class="material-symbols-outlined">apps</span>
+                 {health} </div>
+            ))}</span>
             </span>
-            <span className="flex items-center gap-2">
-            <span class="material-symbols-outlined">apps</span>
-            <span>{healthAndSafety[1]}</span>
-            </span>
+        
           </div>          
       </div>
   );

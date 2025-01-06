@@ -3,7 +3,7 @@ import { useDateContext } from '../context/DateContext'
 
 function Navbar() {
 
-    const {dateDispatch} = useDateContext();
+    const {destination, checkIn, checkOut, guests,dateDispatch} = useDateContext();
 
     function handleSearchClick(){
         dateDispatch({
@@ -19,11 +19,19 @@ function Navbar() {
     </h1>
     <div onClick={handleSearchClick} 
     className='border-2 border-solid bg-white shadow-lg border-slate-400 text-slate-500 p-1 rounded-lg gap-1 space-x-2 font-[0.875rem] place-items-center '>  
-        <span> Any Where </span>
+        <span>{destination || "Any Where" }</span>
         <span className='border-r-2 '></span>
-        <span>Any Week </span>
+        <span>
+            {checkIn && checkOut ? `${checkIn.toLocaleDateString("en-US",{
+                day: "numeric",
+                month : "short"
+            })}-${checkOut.toLocaleDateString("en-US",{
+                day: "numeric",
+                month : "short"
+            })}` : "Any week"}    
+         </span>
         <span className='border-r-2 '></span>
-        <span>Any Guest</span>
+        <span>{guests > 0 ? `${guests} guests` : " Add Guests"}</span>
         <span class=" search material-symbols-outlined" style={{cursor:'pointer',padding:"4px", alignItems:"center", alignContent:"center", backgroundColor:"rgb(249 115 22}",borderRadius:"4px", height:"100%",paddingRight:"6px",fontSize:"1.75rem" }}
         > Search</span>
     </div>

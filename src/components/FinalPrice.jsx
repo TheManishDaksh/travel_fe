@@ -22,8 +22,8 @@ export const FinalPrice=({singleHotel})=>{
                 <div>2 guests</div>
             </div>
             <div className="pt-3 shadow-lg">
-            <button className="bg-orange-500 text-white w-[100%] p-3 font-bold rounded-lg hover:bg-orange-600 transition-colors duration-500 "
-            >Request</button>
+            <button className="bg-orange-500 text-white w-[100%] p-3 font-bold rounded-lg hover:bg-orange-600 transition-colors duration-300 "
+            >Reserve</button>
             </div>
             <div className="px-3 pt-7 flex justify-between pb-3">
                 <span>Rs.{price} x 2 nights</span>
