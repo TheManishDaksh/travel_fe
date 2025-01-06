@@ -1,12 +1,27 @@
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useDateContext } from "../context/DateContext";
 
-export const DateSelector = () =>{
+export const DateSelector = ({checkInType}) =>{
+
+    const {dateDispatch, checkIn, checkOut} = useDateContext()
+
+    function handleDateChange(date){
+        dateDispatch({
+            type : checkInType === "in"? "CHECK_IN" : "CHECK_OUT",
+            payload : date
+        })
+    }
+
     return(
         <DatePicker 
+            selected={checkInType === "in"? checkIn : checkOut}
+            onChange={date => handleDateChange(date)}
             dateFormat='dd/MM/yyyy'
             placeholderText="Add date"
             closeOnScroll ={true}
+            className="border-hidden focus:outline-none "
         />
     )
 }
