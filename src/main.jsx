@@ -4,12 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { CategoryProvider } from './context/categoryContext.jsx'
 import { DateProvider } from './context/DateContext.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <CategoryProvider >
     <BrowserRouter>
       <DateProvider>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </DateProvider>
      </BrowserRouter>
   </CategoryProvider>

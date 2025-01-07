@@ -1,13 +1,22 @@
 import React from 'react'
 import { useDateContext } from '../context/DateContext'
+import { useAuthContext } from '../context/AuthContext';
 
 function Navbar() {
 
     const {destination, checkIn, checkOut, guests,dateDispatch} = useDateContext();
+    const {authDispatch} = useAuthContext();
 
     function handleSearchClick(){
         dateDispatch({
             type : "OPEN_SEARCH_MODAL"
+        })
+    }
+
+    function handleAuthBtn(){
+        
+        authDispatch({
+            type : "OPEN_AUTH_MODAL"
         })
     }
   return(
@@ -37,7 +46,7 @@ function Navbar() {
         > Search</span>
     </div>
     
-    <div className='align-center pt-2 bg-white shadow-lg space-x-4 border-solid border-slate-400 border-2 px-2 rounded-lg '>
+    <div className='align-center pt-2 bg-white shadow-lg space-x-4 border-solid border-slate-400 border-2 px-2 rounded-lg ' onClick={handleAuthBtn}>
     <span class="material-symbols-outlined" style={{cursor:"pointer"}}>menu</span>  
     <span className='border-r-2'></span>
     <span class="material-symbols-outlined" style={{cursor:"pointer"}}>person</span>

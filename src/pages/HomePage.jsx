@@ -6,12 +6,15 @@ import Category from '../components/Category'
 import { useCategory } from '../context/categoryContext'
 import { useDateContext } from '../context/DateContext'
 import { Search } from '../components/Search'
+import { useAuthContext } from '../context/AuthContext'
+import { AuthModal } from '../components/AuthModal'
 
 function HomePage() {
 
     const [hotels, setHotels] = useState([]);
     const {hotelCategory} = useCategory();
     const {isSearchModalOpen} = useDateContext();
+    const {isAuthModalOpen} = useAuthContext()
     useEffect(()=>{
         (async ()=>{
             try{
@@ -42,6 +45,7 @@ function HomePage() {
         }
       </main>
       {isSearchModalOpen && <Search/>}
+      {isAuthModalOpen && <AuthModal/>}
       <div className='text-center p-4 font-bold text-lg ' 
       > You have seen it all, thank you for visiting </div>
     </div>
