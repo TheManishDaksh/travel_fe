@@ -8,7 +8,7 @@ import { FinalPrice } from "../components/FinalPrice";
 
 function SingleHotel(){
     const {id} = useParams();
-    const [singleHotel, setSingleHotel] = useState({})
+    const [singleHotel, setSingleHotel] = useState([])
 
     useEffect(()=>{
         (async()=>{

@@ -32,7 +32,8 @@ function Navbar() {
          </span>
         <span className='border-r-2 '></span>
         <span>{guests > 0 ? `${guests} guests` : " Add Guests"}</span>
-        <span class=" search material-symbols-outlined" style={{cursor:'pointer',padding:"4px", alignItems:"center", alignContent:"center", backgroundColor:"rgb(249 115 22}",borderRadius:"4px", height:"100%",paddingRight:"6px",fontSize:"1.75rem" }}
+
+        <span class=" search material-symbols-outlined" style={{cursor:'pointer',padding:"4px", alignItems:"center", alignContent:"center", backgroundColor:"darkOrange",borderRadius:"4px", height:"100%",paddingRight:"6px",fontSize:"1.75rem" }}
         > Search</span>
     </div>
     

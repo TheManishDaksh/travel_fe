@@ -1,6 +1,18 @@
+import { DateSelector } from "./DateSelector";
+import { useDateContext } from "../context/DateContext";
 
 export const FinalPrice=({singleHotel})=>{
     const {price, rating } = singleHotel;
+    const {guests, dateDispatch} = useDateContext()
+
+    function handleGuestChange(event){
+        if(event.key === "Enter"){
+            dateDispatch({
+                type : "GUEST",
+                payload : event.target.value
+            })
+        }
+    }
     return(
         <div className="pr-28"> 
             <div className="rounded-lg shadow-lg bg-white p-4 text-slate-700">
@@ -14,15 +26,23 @@ export const FinalPrice=({singleHotel})=>{
                 </span>
             </div>
             <div className="flex justify-between p-2">
-                <span>CheckIn</span>
-                <span>CheckOut</span>
+                <div className="flex flex-col">
+                <label>CheckIn</label>
+                <DateSelector checkInType="in"/>
+                </div>
+                <div className="flex flex-col">
+                <label>CheckOut</label>
+                <DateSelector checkInType="out"/>
+                </div> 
             </div>
             <div className="p-[6px] border-2 border-solid border-slate-300 rounded-lg">
                 <div>Number of Guests</div>
-                <div>2 guests</div>
+                <div> {guests <= 0 ? <input className="border-none focus:outline-none"
+                placeholder="add guests" onKeyDown={handleGuestChange}
+                /> : `${guests} guests` }</div>
             </div>
             <div className="pt-3 shadow-lg">
-            <button className="bg-orange-500 text-white w-[100%] p-3 font-bold rounded-lg hover:bg-orange-600 transition-colors duration-300 "
+            <button className="bg-orange-500 text-white w-[100%] p-3 font-bold rounded-lg hover:bg-orange-600 transition-colors duration-300 text-lg"
             >Reserve</button>
             </div>
             <div className="px-3 pt-7 flex justify-between pb-3">

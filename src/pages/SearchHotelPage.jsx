@@ -3,22 +3,24 @@ import Navbar from "../components/Navbar"
 import { useDateContext } from "../context/DateContext"
 import axios from "axios"
 import HotelCard from "../components/HotelCard"
+import { useCategory } from "../context/categoryContext"
 
 export const SearchHotelPage=()=>{
 
     const [hotels, setHotels] = useState([]);
     const {destination} = useDateContext()
+    const {hotelCategory} = useCategory()
 
     useEffect(()=>{
         ( async ()=>{
          try {
-             const {data} = await axios.get("http://localhost:3000/api/hotels");
+             const {data} = await axios.get(`http://localhost:3000/api/hotels`);
              setHotels(data)
          } catch (error) {
              console.log(error);
          }
      })()
-     },[destination])
+     },[destination, hotelCategory])
 
      const filteredHotels = hotels.filter(
         ({ address, city, state }) =>
@@ -38,6 +40,7 @@ export const SearchHotelPage=()=>{
                         state={hotel.address}
                         rating={hotel.rating}
                         price={hotel.price}
+                        _id={hotel._id}
                     />
                     
                 )) : 
