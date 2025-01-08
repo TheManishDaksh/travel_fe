@@ -41,6 +41,11 @@ export const authReducer =(state, {type, payload})=>{
                                             ...state,
                                             password : payload
                                         }
+                                        case "CONFIRM_PASSWORD" :
+                                            return {
+                                                ...state,
+                                                confirmPassword : payload
+                                            }
             default :
             return state ;
     }

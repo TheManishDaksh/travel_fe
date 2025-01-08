@@ -1,16 +1,16 @@
 
  const validateName = (name) => {
-    const regex = /^[a-z]+$/i;
+    const regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
     return regex.test(name);
   };
 
  const validateNumber = (number) => {
-    const regex = /^[6-9]\d{9}$/;
+    const regex =  /^(\+?\d{1,3}[- ]?)?\d{10}$/;
     return regex.test(number);
   };
 
   const validateEmail = (email) => {
-    const regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   };
 
@@ -19,4 +19,8 @@
     return regex.test(password);
   };
 
-  export {validateEmail, validateName, validateNumber, validatePassword}
+  const validateConfirmPassword = (password) => {
+    const regex = /^(?=.*\d)(?=.*[@#$*!&%])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return regex.test(password);
+  };
+  export {validateEmail, validateName, validateNumber, validatePassword, validateConfirmPassword}

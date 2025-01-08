@@ -1,15 +1,17 @@
 import { validateNumber, validatePassword } from "../utils/validation"
 import { useAuthContext } from "../context/AuthContext"
-
+import loginService from "../Service"
 
 export const AuthLogin = ()=>{
 
+    let isNumberValidate, isPasswordValidate ;
+
     const {authDispatch, number, password} = useAuthContext()
     function handleNumberLogin(event){
-        const isNumberValidate = validateNumber(event.target.value)
-        console.log(isNumberValidate);
+         isNumberValidate = validateNumber(event.target.value)
         
         if(isNumberValidate){
+            console.log('Number Valide');
             authDispatch({
                 type : "NUMBER",
                 payload: event.target.value
@@ -21,8 +23,9 @@ export const AuthLogin = ()=>{
     }
 
     function handlePasswordLogin(event){
-        const isPasswordValidate = validatePassword(event.target.value)
+         isPasswordValidate = validatePassword(event.target.value)
         if(isPasswordValidate){
+            console.log('password Valide');
             authDispatch({
                 type : "PASSWORD",
                 payload: event.target.value
@@ -31,6 +34,16 @@ export const AuthLogin = ()=>{
             console.log("invalid Password");
             
         }
+    }
+
+    function handleLoginForm(event){
+        event.preventDefault();
+        if(isNumberValidate && isPasswordValidate){
+            loginService(number, password)
+        }
+        authDispatch({
+            type : "CLOSE_AUTH"
+        })
     }
     return(
         <div className="w-[100%] p-4 text-slate-600">
@@ -49,7 +62,8 @@ export const AuthLogin = ()=>{
                     <input type="password" min='8' max='16' required />
                 </div>
 
-                <div className="w-[100%] p-4 mb-4">
+                <div onSubmit={handleLoginForm} 
+                    className="w-[100%] p-4 mb-4">
                     <button>Login</button>
                 </div>
             </form>

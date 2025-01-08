@@ -7,15 +7,16 @@ const initialValue = {
     number : "",
     email : "",
     password : "",
+    confirmPassword : "",
     authToggle : "login"
 }
 const AuthContext = createContext(initialValue)
 
 const AuthProvider = ({children})=>{
 
-    const [{isAuthModalOpen, authToggle, username, number, email, password}, authDispatch] = useReducer(authReducer, initialValue)
+    const [{isAuthModalOpen, authToggle, username, number, email, password, confirmPassword}, authDispatch] = useReducer(authReducer, initialValue)
    return(
-   <AuthContext.Provider value={{isAuthModalOpen, authToggle, username, number, email, password, authDispatch}}>
+   <AuthContext.Provider value={{isAuthModalOpen, authToggle, username, number, email, password, confirmPassword, authDispatch}}>
         {children}
     </AuthContext.Provider>
 )}

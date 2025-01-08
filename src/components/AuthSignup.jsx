@@ -1,12 +1,14 @@
-import { validateName, validateEmail, validateNumber, validatePassword } from "../utils/validation" 
+import { validateName, validateEmail, validateNumber, validatePassword, validateConfirmPassword } from "../utils/validation" 
 import { useAuthContext } from "../context/AuthContext"
+import { SignupService } from "../Service";
 
 export const AuthSignup = ()=>{
 
-    const {authDispatch, number, password, username, email} = useAuthContext();
+    const {authDispatch, number, password,confirmPassword, username, email} = useAuthContext();
 
+    let isNameValidate, isEmailValidate, isNumberValidate, isPasswordValidate, isConfirmPasswordValidate
     function handleNameInput(event){
-        const isNameValidate = validateName(event.target.value)
+         isNameValidate = validateName(event.target.value)
         if(isNameValidate){
             console.log("validName");
             
@@ -21,7 +23,7 @@ export const AuthSignup = ()=>{
     }
 
     function handleNumberInput(event){
-        const isNumberValidate = validateNumber(event.target.value)
+         isNumberValidate = validateNumber(event.target.value)
         if(isNumberValidate){
             console.log("validNumber");
             authDispatch({
@@ -35,7 +37,7 @@ export const AuthSignup = ()=>{
     }
 
     function handleEmailInput(event){
-        const isEmailValidate = validateEmail(event.target.value)
+         isEmailValidate = validateEmail(event.target.value)
         if(isEmailValidate){
             console.log("validEmail");
             authDispatch({
@@ -49,7 +51,7 @@ export const AuthSignup = ()=>{
     }
 
     function handlePasswordInput(event){
-        const isPasswordValidate = validatePassword(event.target.value)
+         isPasswordValidate = validatePassword(event.target.value)
         if(isPasswordValidate){
             console.log("validPassword");
             authDispatch({
@@ -63,21 +65,31 @@ export const AuthSignup = ()=>{
     }
 
     function handleConfirmPasswordInput(event){
-        const isConfirmPasswordValidate = validatePassword(event.target.value)
+         isConfirmPasswordValidate = validateConfirmPassword(event.target.value)
         if(isConfirmPasswordValidate){
-            console.log("validPassword");
+            console.log("validConfirmPassword");
             authDispatch({
-                type : "PASSWORD",
+                type : "CONFIRM_PASSWORD",
                 payload: event.target.value
             })
         }else{
             console.log("invalid confirmPassword");
-            
         }
+    }
+
+    function handleSignupFormSubmit(event){
+        event.preventDefault();
+        if(isNameValidate && isNumberValidate && isEmailValidate && isPasswordValidate){
+            SignupService(username, number, email, password)
+        }
+        authDispatch({
+            type : "TOGGLE_LOGIN"
+        })
     }
     return(
         <div className="w-[100%] p-4 text-slate-600">
-            <form className="flex flex-col">
+            <form 
+                className="flex flex-col">
                 <div>
                     <label> Name</label>
                     <input defaultValue={username}
@@ -104,11 +116,11 @@ export const AuthSignup = ()=>{
                 </div>
                 <div>
                     <label> Confirm Password </label>
-                    <input defaultValue={password}
+                    <input defaultValue={confirmPassword}
                     onChange={handleConfirmPasswordInput}
                     type="password" min='8' max='16' required />
                 </div>
-                <div>
+                <div onSubmit={handleSignupFormSubmit}>
                     <button>Submit</button>
                 </div>
             </form>
