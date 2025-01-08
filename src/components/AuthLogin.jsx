@@ -1,12 +1,12 @@
 import { validateNumber, validatePassword } from "../utils/validation"
 import { useAuthContext } from "../context/AuthContext"
-import loginService from "../Service"
+import loginService from "../Service/loginService"
 
 export const AuthLogin = ()=>{
 
     let isNumberValidate, isPasswordValidate ;
 
-    const {authDispatch, number, password} = useAuthContext()
+    const {authDispatch, mobileNumber, password} = useAuthContext()
     function handleNumberLogin(event){
          isNumberValidate = validateNumber(event.target.value)
         
@@ -48,7 +48,7 @@ export const AuthLogin = ()=>{
     return(
         <div className="w-[100%] p-4 text-slate-600">
             <form className="flex flex-col">
-                <div  defaultValue={number}
+                <div  defaultValue={mobileNumber}
                     onChange={handleNumberLogin} 
                     className="flex flex-col p-2">
                     <label> Mobile Number</label>

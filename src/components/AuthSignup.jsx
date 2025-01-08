@@ -1,10 +1,10 @@
 import { validateName, validateEmail, validateNumber, validatePassword, validateConfirmPassword } from "../utils/validation" 
 import { useAuthContext } from "../context/AuthContext"
-import { SignupService } from "../Service";
+import { SignupService } from "../Service/SignupService";
 
 export const AuthSignup = ()=>{
 
-    const {authDispatch, number, password,confirmPassword, username, email} = useAuthContext();
+    const {authDispatch, mobileNumber, password,confirmPassword, username, email} = useAuthContext();
 
     let isNameValidate, isEmailValidate, isNumberValidate, isPasswordValidate, isConfirmPasswordValidate
     function handleNameInput(event){
@@ -80,7 +80,7 @@ export const AuthSignup = ()=>{
     function handleSignupFormSubmit(event){
         event.preventDefault();
         if(isNameValidate && isNumberValidate && isEmailValidate && isPasswordValidate){
-            SignupService(username, number, email, password)
+            SignupService(username, mobileNumber, email, password)
         }
         authDispatch({
             type : "TOGGLE_LOGIN"
@@ -98,7 +98,7 @@ export const AuthSignup = ()=>{
                 </div>
                 <div>
                     <label> Mobile Number</label>
-                    <input defaultValue={number}
+                    <input defaultValue={mobileNumber}
                     onChange={handleNumberInput}
                     type="number" max='10' required />
                 </div>

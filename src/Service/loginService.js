@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const loginService= async(number, password)=>{
+ const loginService= async(mobileNumber, password)=>{
 
     try{
-        const {data: accessToken, username} = await axios.post("http://localhost:3000/api/auth/register", {
-            number : number,
+        const {data: accessToken, username} = await axios.post("http://localhost:3000/api/auth/login", {
+            mobileNumber : mobileNumber,
             password : password
         })
         console.log("login successfully");
@@ -15,3 +15,4 @@ export const loginService= async(number, password)=>{
     }
     
 }
+export default loginService
