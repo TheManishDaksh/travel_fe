@@ -39,7 +39,9 @@ export const AuthLogin = ()=>{
     function handleLoginForm(event){
         event.preventDefault();
         if(isNumberValidate && isPasswordValidate){
-            loginService(number, password)
+            console.log("login");
+            
+            loginService(mobileNumber, password)
         }
         authDispatch({
             type : "CLOSE_AUTH"
@@ -47,7 +49,8 @@ export const AuthLogin = ()=>{
     }
     return(
         <div className="w-[100%] p-4 text-slate-600">
-            <form className="flex flex-col">
+            <form  
+                className="flex flex-col">
                 <div  defaultValue={mobileNumber}
                     onChange={handleNumberLogin} 
                     className="flex flex-col p-2">
@@ -62,7 +65,7 @@ export const AuthLogin = ()=>{
                     <input type="password" min='8' max='16' required />
                 </div>
 
-                <div onSubmit={handleLoginForm} 
+                <div onClick={handleLoginForm}
                     className="w-[100%] p-4 mb-4">
                     <button>Login</button>
                 </div>

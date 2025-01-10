@@ -1,8 +1,8 @@
 import axios from "axios";
 
- const SignupService=async(username, mobileNumber, email, password)=>{
+export const SignupService=async(username, mobileNumber, email, password)=>{
     try{
-    const data = await axios.post("http://localhost:3000/api/auth/signup",{
+    const data = await axios.post("https://travelo-mhdr.onrender.com/api/auth/signup",{
         username : username,
         mobileNumber : mobileNumber,
         email : email,
@@ -14,5 +14,4 @@ import axios from "axios";
         console.log(`error in signup - ${error}`); 
     }
 }
-
-export default SignupService    
+   

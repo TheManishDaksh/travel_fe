@@ -78,8 +78,9 @@ export const AuthSignup = ()=>{
     }
 
     function handleSignupFormSubmit(event){
-        event.preventDefault();
+        event.preventDefault()
         if(isNameValidate && isNumberValidate && isEmailValidate && isPasswordValidate){
+            console.log("signup form submit"); 
             SignupService(username, mobileNumber, email, password)
         }
         authDispatch({
@@ -120,8 +121,9 @@ export const AuthSignup = ()=>{
                     onChange={handleConfirmPasswordInput}
                     type="password" min='8' max='16' required />
                 </div>
-                <div onSubmit={handleSignupFormSubmit}>
-                    <button>Submit</button>
+                <div > 
+                    <button onClick={handleSignupFormSubmit} type="submit"
+                    >Submit</button>
                 </div>
             </form>
         </div>

@@ -21,7 +21,7 @@ function Category(){
     useEffect(()=>{
        ( async ()=>{
         try {
-            const {data} = await axios.get("http://localhost:3000/api/category");
+            const {data} = await axios.get("https://travelo-mhdr.onrender.com/api/category");
             const showCategory = data.slice(categoryToShow, categoryToShow + 10)
             setCategories(showCategory);
         } catch (error) {

@@ -13,7 +13,7 @@ function SingleHotel(){
     useEffect(()=>{
         (async()=>{
             try{
-                const {data} = await axios.get(`http://localhost:3000/api/hotels/${id}`)
+                const {data} = await axios.get(`https://travelo-mhdr.onrender.com/api/hotels/${id}`)
                 setSingleHotel(data)    
             }catch(error){
                 console.log(error);

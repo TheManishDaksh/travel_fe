@@ -21,7 +21,7 @@ export const Search =()=>{
     useEffect(()=>{
         ( async ()=>{
          try {
-             const {data} = await axios.get(`http://localhost:3000/api/hotels?category=${hotelCategory}`);
+             const {data} = await axios.get(`https://travelo-mhdr.onrender.com/api/hotels?category=${hotelCategory}`);
              setHotels(data)
          } catch (error) {
              console.log(error);

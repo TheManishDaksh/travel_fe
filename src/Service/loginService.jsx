@@ -3,7 +3,7 @@ import axios from "axios";
  const loginService= async(mobileNumber, password)=>{
 
     try{
-        const {data: accessToken, username} = await axios.post("http://localhost:3000/api/auth/login", {
+        const {data: accessToken, username} = await axios.post("https://travelo-mhdr.onrender.com/api/auth/login", {
             mobileNumber : mobileNumber,
             password : password
         })
@@ -13,6 +13,5 @@ import axios from "axios";
     }catch(error){
         console.log(`error in login-${error}`);
     }
-    
 }
 export default loginService
