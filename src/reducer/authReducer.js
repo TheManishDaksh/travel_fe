@@ -51,6 +51,11 @@ export const authReducer =(state, {type, payload})=>{
                                                     ...state,
                                                     accessToken : payload
                                                 }
+                                                case "SET_USERNAME" :
+                                                    return {
+                                                        ...state,
+                                                        username : payload
+                                                    }
             default :
             return state ;
     }

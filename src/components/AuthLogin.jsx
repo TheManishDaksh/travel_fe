@@ -36,19 +36,26 @@ export const AuthLogin = ()=>{
         }
     }
 
-    function handleLoginForm(event){
+    const handleLoginForm = async(event)=>{
         event.preventDefault();
         if(isNumberValidate && isPasswordValidate){
             console.log("login");
             
-           const {accessToken } = loginService(mobileNumber, password)
+           const {accessToken, username } = await loginService(mobileNumber, password)
            authDispatch({
             type : "SET_TOKEN",
             payload : accessToken
+           });
+           authDispatch ({
+            type : "SET_USERNAME",
+            payload : username
            })
+           console.log(accessToken);
+        }else{
+            authDispatch({
+                type : "TOGGLE_SIGNUP"
+            })
         }
-        console.log("lgo data");
-        
         authDispatch({
             type : "CLOSE_AUTH"
         })

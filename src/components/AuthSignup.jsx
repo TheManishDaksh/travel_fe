@@ -1,12 +1,13 @@
 import { validateName, validateEmail, validateNumber, validatePassword, validateConfirmPassword } from "../utils/validation" 
 import { useAuthContext } from "../context/AuthContext"
-import { SignupService } from "../Service/SignupService";
+import SignupService from "../Service/SignupService"
 
 export const AuthSignup = ()=>{
 
     const {authDispatch, mobileNumber, password,confirmPassword, username, email} = useAuthContext();
 
-    let isNameValidate, isEmailValidate, isNumberValidate, isPasswordValidate, isConfirmPasswordValidate
+    let isNameValidate, isEmailValidate, isNumberValidate, isPasswordValidate, isConfirmPasswordValidate ;
+    
     function handleNameInput(event){
          isNameValidate = validateName(event.target.value)
         if(isNameValidate){
@@ -83,11 +84,16 @@ export const AuthSignup = ()=>{
         }
     }
 
-    function handleSignupFormSubmit(event){
-        event.preventDefault()
-        if(isNameValidate && isNumberValidate && isEmailValidate && isPasswordValidate){
+    const handleSignupFormSubmit = (event)=>{
+        event.preventDefault();
+
+        if(isNameValidate &&
+            isNumberValidate && 
+            isEmailValidate && 
+            isPasswordValidate && 
+            isConfirmPasswordValidate){
             console.log("signup form submit"); 
-            SignupService(username, mobileNumber, email, password)
+           SignupService(username, mobileNumber, email, password, confirmPassword)
         }
         console.log("all sent");
         authDispatch({
