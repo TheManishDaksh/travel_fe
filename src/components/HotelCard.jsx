@@ -1,14 +1,43 @@
 import React from 'react'
 import {useNavigate} from "react-router-dom"
+import { useWishContext } from '../context/WishlistContext';
+import { useAuthContext } from '../context/AuthContext';
+import { findInWishlist } from '../utils/find-In-Wishlist';
 
-function HotelCard({_id, name, image, address, state, rating, price}) {
+function HotelCard({hotel}) {
     
+    const {_id, name, image, address, state, rating, price} = hotel ;
     const navigate = useNavigate();
+    const {wishlistDispatch, wishlist} = useWishContext()
+    const {authDispatch, accessToken} = useAuthContext()
+    const hotelInWishlist = findInWishlist(wishlist, _id)
 
     function handleSingleHotel(){
         
         navigate(`/hotels/${name}/${address}/${_id}/reserve`)
     }
+
+    function handleClickFavourite(){
+        if(accessToken){
+            if(!hotelInWishlist){
+                wishlistDispatch({
+                    type : "ADD_TO_WISHLIST",
+                    payload : hotel
+                })
+            }else{
+                wishlistDispatch({
+                    type : "REMOVE_FROM_WISHLIST",
+                    payload : _id
+                })
+            }
+        }else{
+            authDispatch({
+                type : "OPEN_AUTH_MODAL"
+            })
+        }
+       
+    }
+
   return (
         
             <div className='relative rounded-lg border-solid border-2 border-slate-300 text-slate-600  w-64 bg-white shadow-2xl hover:scale-110 transition duration-200 cursor-pointer'> 
@@ -29,7 +58,8 @@ function HotelCard({_id, name, image, address, state, rating, price}) {
                 <span className='pl-1 text-sm'>night</span>
                 </div>
         
-            <button className='absolute top-2 right-3 bg-transparent p-0 m-0 cursor-pointer '>
+            <button onClick={handleClickFavourite}
+            className='absolute top-2 right-3 bg-transparent p-0 m-0 cursor-pointer '>
             <span class="material-symbols-outlined">favorite</span>
             </button>
         </div>

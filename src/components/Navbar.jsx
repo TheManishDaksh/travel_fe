@@ -5,7 +5,7 @@ import { useAuthContext } from '../context/AuthContext';
 function Navbar() {
 
     const {destination, checkIn, checkOut, guests,dateDispatch} = useDateContext();
-    const {authDispatch} = useAuthContext();
+    const {authDispatch, username} = useAuthContext();
 
     function handleSearchClick(){
         dateDispatch({
@@ -46,10 +46,15 @@ function Navbar() {
         > Search</span>
     </div>
     
+    <div className='flex items-center'>
+        <div className='p-2'>
+           { username ? `Hello,${localStorage.getItem("username")}` : "" }
+        </div>
     <div className='align-center pt-2 bg-white shadow-lg space-x-4 border-solid border-slate-400 border-2 px-2 rounded-lg ' onClick={handleAuthBtn}>
     <span class="material-symbols-outlined" style={{cursor:"pointer"}}>menu</span>  
     <span className='border-r-2'></span>
     <span class="material-symbols-outlined" style={{cursor:"pointer"}}>person</span>
+    </div>
     </div>
    </header>
   )

@@ -41,8 +41,14 @@ export const AuthLogin = ()=>{
         if(isNumberValidate && isPasswordValidate){
             console.log("login");
             
-            loginService(mobileNumber, password)
+           const {accessToken } = loginService(mobileNumber, password)
+           authDispatch({
+            type : "SET_TOKEN",
+            payload : accessToken
+           })
         }
+        console.log("lgo data");
+        
         authDispatch({
             type : "CLOSE_AUTH"
         })

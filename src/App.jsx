@@ -3,6 +3,7 @@ import './App.css'
 import SingleHotel from './pages/SingleHotel'
 import HomePage from "./pages/HomePage"
 import { SearchHotelPage } from './pages/SearchHotelPage'
+import WishlistPage from './pages/WishlistPage'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <Route path='/' element={<HomePage/>} />
       <Route path='/hotels/:name/:address/:id/reserve' element={<SingleHotel/>}/>
       <Route path='/hotels/:address' element = { <SearchHotelPage/>} />
+      <Route path='/hotels/wishlist' element = {<WishlistPage/>} />
     </Routes>
   )
 }

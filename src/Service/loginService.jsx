@@ -9,6 +9,8 @@ import axios from "axios";
         })
         console.log("login successfully");
         console.log(username, accessToken);
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("username", username);
         return {accessToken, username};
     }catch(error){
         console.log(`error in login-${error}`);

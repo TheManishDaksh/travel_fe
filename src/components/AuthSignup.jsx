@@ -16,11 +16,13 @@ export const AuthSignup = ()=>{
                 type : "NAME",
                 payload: event.target.value
             })
+            console.log("Name sent");
         }else{
             console.log("invalid name");
             
         }
     }
+    localStorage.setItem("username", username)
 
     function handleNumberInput(event){
          isNumberValidate = validateNumber(event.target.value)
@@ -30,6 +32,7 @@ export const AuthSignup = ()=>{
                 type : "NUMBER",
                 payload: event.target.value
             })
+            console.log("numbber sent");
         }else{
             console.log("invalid number");
             
@@ -44,6 +47,7 @@ export const AuthSignup = ()=>{
                 type : "EMAIL",
                 payload: event.target.value
             })
+            console.log("email sent");
         }else{
             console.log("invalid email");
             
@@ -58,6 +62,7 @@ export const AuthSignup = ()=>{
                 type : "PASSWORD",
                 payload: event.target.value
             })
+            console.log("password sent");
         }else{
             console.log("invalid Password");
             
@@ -72,6 +77,7 @@ export const AuthSignup = ()=>{
                 type : "CONFIRM_PASSWORD",
                 payload: event.target.value
             })
+            console.log("confirm password sent");
         }else{
             console.log("invalid confirmPassword");
         }
@@ -83,6 +89,7 @@ export const AuthSignup = ()=>{
             console.log("signup form submit"); 
             SignupService(username, mobileNumber, email, password)
         }
+        console.log("all sent");
         authDispatch({
             type : "TOGGLE_LOGIN"
         })

@@ -46,6 +46,11 @@ export const authReducer =(state, {type, payload})=>{
                                                 ...state,
                                                 confirmPassword : payload
                                             }
+                                            case "SET_TOKEN" :
+                                                return {
+                                                    ...state,
+                                                    accessToken : payload
+                                                }
             default :
             return state ;
     }
