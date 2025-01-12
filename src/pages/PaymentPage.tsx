@@ -1,90 +1,37 @@
 import React from 'react';
-import { Fragment, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useDateContext } from "../context/DateContext";
-import { useHotel } from "../context/HotelContext";
-import { v4 as uuid } from "uuid";
+import { useHotel } from '../context/HotelContext';
 import axios from "axios";
 
-export const Payment = () => {
-    const params = useParams();
-    const { id } = params;
-  
-    const navigate = useNavigate();
-  
+ const PaymentPage = () => {
+    const {id} = useParams();
+   
     const { guests, checkInDate, checkOutDate } = useDateContext();
-  
-    const { setHotel } = useHotel();
-  
+    const {hotel, hotelDispatch} = useHotel()
     const numberOfNights =
       checkInDate && checkOutDate
         ? (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
         : 0;
+         
+        useEffect(()=>{
+          (async()=>{
+              try{
+                  const response = await axios.get(`https://travelo-mhdr.onrender.com/api/hotels/${id}`)
+                  hotelDispatch({
+                    type : "SET_TO_HOTELS",
+                    payload : response.data
+                  })    
+              }catch(error){
+                  console.log(error);
+              }
+          })()
+      },[id])
   
-    const [singleHotel, setSingleHotel] = useState({});
-  
-    useEffect(() => {
-      (async () => {
-        try {
-          const { data } = await axios.get(
-            `https://travelo-mhdr.onrender.com/api/hotels/${id}`
-          );
-          setSingleHotel(data);
-        } catch (err) {
-          console.log(err);
-        }
-      })();
-    }, [id]);
-  
-    const { image, name, address, state, rating, price } = singleHotel;
+    const { image, name, address, state, rating, price } = hotel;
   
     const totalPayableAmount = price * numberOfNights + 150;
-  
-    const loadScript = (source) => {
-      return new Promise((resolve) => {
-        const script = document.createElement("script");
-        script.src = source;
-        script.onload = () => resolve(true);
-        script.onerror = () => resolve(false);
-        document.body.appendChild(script);
-      });
-    };
-  
-    const handleConfirmBookingClick = async () => {
-      const response = await loadScript(
-        "https://checkout.razorpay.com/v1/checkout.js"
-      );
-      if (!response) {
-        console.log({ message: "Razorpay SDK failed to load" });
-      }
-  
-      const options = {
-        key: "rzp_test_VSdp7X3K39GwBK",
-        amount: totalPayableAmount * 100,
-        currency: "INR",
-        name: "TravelO",
-        email: "sakari@gmail.com",
-        contact: "9876543210",
-        description: "Thank you for booking with us",
-  
-        handler: ({ payment_id }) => {
-          setHotel({...singleHotel, orderId: uuid(),
-          payment_id, 
-          checkInDate: checkInDate.toLocaleDateString("en-US", { day: "numeric", month: "short" }),
-          checkOutDate: checkOutDate.toLocaleDateString("en-US", { day: "numeric", month: "short" }),
-          totalPayableAmount});
-          
-        },
-        prefill: {
-          name: "Prakash Sakari",
-          email: "sakari@gmail.com",
-          contact: "9876543210",
-        },
-      };
-  
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
-    };
   
     return (
       <div>
@@ -125,7 +72,7 @@ export const Payment = () => {
             </div>
             <button
               className="button btn-primary btn-reserve cursor btn-pay"
-              onClick={handleConfirmBookingClick}
+              
             >
               Confirm Booking
             </button>
@@ -176,3 +123,5 @@ export const Payment = () => {
       </div>
     );
   };
+
+  export default PaymentPage

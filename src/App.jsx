@@ -4,6 +4,7 @@ import SingleHotel from './pages/SingleHotel'
 import HomePage from "./pages/HomePage"
 import { SearchHotelPage } from './pages/SearchHotelPage'
 import WishlistPage from './pages/WishlistPage'
+import PaymentPage from "./pages/PaymentPage"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path='/hotels/:name/:address/:id/reserve' element={<SingleHotel/>}/>
       <Route path='/hotels/:address' element = { <SearchHotelPage/>} />
       <Route path='/hotels/wishlist' element = {<WishlistPage/>} />
+      <Route path='/hotels/:id/payment' element = { <PaymentPage/>} />
     </Routes>
   )
 }

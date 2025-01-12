@@ -1,15 +1,35 @@
 import { DateSelector } from "./DateSelector";
 import { useDateContext } from "../context/DateContext";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 export const FinalPrice=({singleHotel})=>{
-    const {price, rating } = singleHotel;
-    const {guests, dateDispatch} = useDateContext()
+    const {_id, price, rating } = singleHotel;
+    const {guests, dateDispatch, checkIn, checkOut} = useDateContext();
+    const {authDispatch, accessToken} = useAuthContext()
+    const navigate = useNavigate();
 
     function handleGuestChange(event){
         if(event.key === "Enter"){
             dateDispatch({
                 type : "GUEST",
                 payload : event.target.value
+            })
+        }
+    }
+
+    function handleReserveClick(){
+        if(!checkIn){
+            alert("Please Enter Checkin Date")
+        }else if (!checkOut){
+            alert("Please Enter Checkout Date")
+        }else if (guests < 1){
+            alert("Please set the number of guests")
+        }else if(!accessToken){
+            navigate(`/hotels/${_id}/payment`)
+        }else{
+            authDispatch({
+                type : "OPEN_AUTH_MODAL"
             })
         }
     }
@@ -42,7 +62,8 @@ export const FinalPrice=({singleHotel})=>{
                 /> : `${guests} guests` }</div>
             </div>
             <div className="pt-3 shadow-lg">
-            <button className="bg-orange-500 text-white w-[100%] p-3 font-bold rounded-lg hover:bg-orange-600 transition-colors duration-300 text-lg"
+            <button onClick={handleReserveClick}
+            className="bg-orange-500 text-white w-[100%] p-3 font-bold rounded-lg hover:bg-orange-600 transition-colors duration-300 text-lg"
             >Reserve</button>
             </div>
             <div className="px-3 pt-7 flex justify-between pb-3">
