@@ -4,7 +4,7 @@ import { authReducer } from "../reducer/authReducer";
 const initialValue = {
     isAuthModalOpen : false,
     username : "",
-    mobileNumber : "",
+    mobileNumber : 0,
     email : "",
     password : "",
     accessToken : "",

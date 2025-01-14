@@ -56,6 +56,14 @@ export const authReducer =(state, {type, payload})=>{
                                                         ...state,
                                                         username : payload
                                                     }
+                                                    case "CLEAR_INPUT" :
+                                                        return{
+                                                            username : "",
+                                                            email : "",
+                                                            mobileNumber : 0,
+                                                            password : "",
+                                                            confirmPassword : ""
+                                                        }
             default :
             return state ;
     }

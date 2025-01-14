@@ -10,6 +10,7 @@ const SignupService=async(username, mobileNumber, email, password)=>{
     })
     console.log(data);
     console.log("Signed up");
+    alert("sign up");
     }catch(error){
         console.log(`error in signup - ${error}`); 
     }

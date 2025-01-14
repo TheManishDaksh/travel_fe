@@ -86,23 +86,32 @@ export const AuthSignup = ()=>{
 
     const handleSignupFormSubmit = (event)=>{
         event.preventDefault();
-
+        try{
         if(isNameValidate &&
             isNumberValidate && 
             isEmailValidate && 
             isPasswordValidate && 
             isConfirmPasswordValidate){
             console.log("signup form submit"); 
-           SignupService(username, mobileNumber, email, password, confirmPassword)
+           SignupService (username, mobileNumber, email, password )
+        }else{
+            console.log("inputs are not valid");
         }
-        console.log("all sent");
+       
         authDispatch({
             type : "TOGGLE_LOGIN"
         })
+        authDispatch({
+            type : "CLEAR_INPUT"
+        })
+        }catch(error){
+            console.log("error in signup");
+            
+        }
     }
     return(
         <div className="w-[100%] p-4 text-slate-600">
-            <form 
+            <form onSubmit={handleSignupFormSubmit}
                 className="flex flex-col">
                 <div>
                     <label> Name</label>
@@ -135,7 +144,7 @@ export const AuthSignup = ()=>{
                     type="password" min='8' max='16' required />
                 </div>
                 <div > 
-                    <button onClick={handleSignupFormSubmit} type="submit"
+                    <button  type="submit"
                     >Submit</button>
                 </div>
             </form>
