@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom"
 import { useWishContext } from '../context/WishlistContext';
 import { useAuthContext } from '../context/AuthContext';
 import { findInWishlist } from '../utils/find-In-Wishlist';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function HotelCard({hotel}) {
     
@@ -59,8 +60,8 @@ function HotelCard({hotel}) {
                 </div>
         
             <button onClick={handleClickFavourite}
-            className='absolute top-2 right-3 bg-transparent p-0 m-0 cursor-pointer '>
-            <span class="material-symbols-outlined">favorite</span>
+            className='absolute top-2 right-3 bg-transparent p-0 m-0 cursor-pointer'>
+            <span className='overflow-hidden bg-transparent rounded-full'><FavoriteIcon/></span>
             </button>
         </div>
        
