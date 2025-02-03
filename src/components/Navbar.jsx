@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import { useDateContext } from '../context/DateContext'
 import { useAuthContext } from '../context/AuthContext';
 
@@ -20,44 +21,99 @@ function Navbar() {
         })
     }
   return(
-   <header className='flex py-2 px-10 justify-between border-b border-solid border-slate-400 items-center content-center text-center'>
-    <h1 className='text-3xl text-primary font-bold'>
-        <a href="/">
-            TravelO
-        </a>
-    </h1>
-    <div onClick={handleSearchClick} 
-    className='border-2 border-solid bg-white shadow-lg border-slate-400 text-slate-500 p-1 rounded-lg gap-1 space-x-2 font-[0.875rem] place-items-center '>  
-        <span>{destination || "Any Where" }</span>
-        <span className='border-r-2 '></span>
-        <span>
-            {checkIn && checkOut ? `${checkIn.toLocaleDateString("en-US",{
-                day: "numeric",
-                month : "short"
-            })}-${checkOut.toLocaleDateString("en-US",{
-                day: "numeric",
-                month : "short"
-            })}` : "Any week"}    
-         </span>
-        <span className='border-r-2 '></span>
-        <span>{guests > 0 ? `${guests} guests` : " Add Guests"}</span>
-
-        <span class=" search material-symbols-outlined" style={{cursor:'pointer',padding:"4px", alignItems:"center", alignContent:"center", backgroundColor:"darkOrange",borderRadius:"4px", height:"100%",paddingRight:"6px",fontSize:"1.75rem" }}
-        > Search</span>
+    <header className='flex flex-wrap items-center justify-between py-2 px-4 md:px-6 lg:px-10 border-b border-slate-400 bg-white shadow-sm'>
+    <div className='flex items-center w-full md:w-auto justify-between'>
+      <h1 className='text-2xl md:text-3xl text-primary font-bold'>
+        <Link to="/" className='hover:text-primary/80 transition-colors'>
+          TravelO
+        </Link>
+      </h1>
+      
+      {/* Mobile Menu Toggle (for smaller screens) */}
+      <div className='md:hidden'>
+        <button 
+          onClick={handleAuthBtn} 
+          className='text-slate-600 hover:text-slate-800 focus:outline-none'
+        >
+          <span className="material-symbols-outlined">person</span>
+        </button>
+      </div>
     </div>
     
-    <div className='flex items-center'>
-        <div className='p-2'>
-           { username ? `Hello,${localStorage.getItem("username")}` : "" }
+    {/* Search Bar - Responsive Layout */}
+    <div 
+      onClick={handleSearchClick} 
+      className='
+        w-full md:w-auto 
+        mt-2 md:mt-0
+        flex items-center justify-between 
+        border-2 border-slate-400 
+        bg-white shadow-lg 
+        rounded-lg 
+        p-2 
+        space-x-2 
+        cursor-pointer 
+        hover:border-primary/70 
+        transition-all
+        text-sm md:text-base
+      '
+    >
+      <div className='flex items-center space-x-2 overflow-hidden'>
+        <span className='truncate max-w-[100px]'>
+          {destination || "Any Where"}
+        </span>
+        <span className='border-r-2 h-4 mx-2'></span>
+        <span className='truncate max-w-[120px]'>
+          {checkIn && checkOut 
+            ? `${checkIn.toLocaleDateString("en-US", { day: "numeric", month: "short" })}-${checkOut.toLocaleDateString("en-US", { day: "numeric", month: "short" })}`
+            : "Any week"}
+        </span>
+        <span className='border-r-2 h-4 mx-2'></span>
+        <span className='truncate max-w-[80px]'>
+          {guests > 0 ? `${guests} guests` : "Add Guests"}
+        </span>
+      </div>
+      
+      <span 
+        className='
+          ml-2 
+          bg-primary 
+          text-white 
+          rounded-md 
+          px-2 py-1 
+          flex items-center 
+          text-sm
+        '
+      >
+        <span className="material-symbols-outlined mr-1 bg-inherit">search</span>
+        Search
+      </span>
+    </div>
+    
+    {/* User Section - Responsive */}
+    <div className='hidden md:flex items-center space-x-4'>
+      {username && (
+        <div className='text-slate-700 text-sm'>
+          Hello, {localStorage.getItem("username")}
         </div>
-    <div className='align-center pt-2 bg-white shadow-lg space-x-4 border-solid border-slate-400 border-2 px-2 rounded-lg ' onClick={handleAuthBtn}>
-    <span class="material-symbols-outlined" style={{cursor:"pointer"}}>menu</span>  
-    <span className='border-r-2'></span>
-    <span class="material-symbols-outlined" style={{cursor:"pointer"}}>person</span>
+      )}
+      <button 
+        onClick={handleAuthBtn} 
+        className='
+          bg-white 
+          shadow-lg 
+          border-2 border-slate-400 
+          rounded-lg 
+          p-2 
+          hover:bg-slate-50 
+          transition-colors
+        '
+      >
+        <span className="material-symbols-outlined">person</span>
+      </button>
     </div>
-    </div>
-   </header>
-  )
-}
+  </header>
+);
+};
 
-export default Navbar
+export default Navbar;

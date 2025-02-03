@@ -8,6 +8,7 @@ import { useDateContext } from '../context/DateContext'
 import { Search } from '../components/Search'
 import { useAuthContext } from '../context/AuthContext'
 import { AuthModal } from '../components/AuthModal'
+import Loader from '../components/Loader'
 
 function HomePage() {
 
@@ -29,9 +30,9 @@ function HomePage() {
     <div> 
         <Navbar className="sticky"/>
         <Category/>
-        <main className='grid grid-cols-4 gap-7 p-5 pl-9 overflow-y-auto  '>
+        <main className='grid md:grid-cols-2 lg:grid-cols-4 gap-7 p-5 pl-9 overflow-y-auto  '>
         {
-            hotels.map((hotel)=> <HotelCard key={hotel._id}
+            hotels ? hotels.map((hotel)=> <HotelCard key={hotel._id}
             hotel={hotel}
             _id={hotel._id}
             name={hotel.name}
@@ -41,7 +42,7 @@ function HomePage() {
             rating={hotel.rating}
             price={hotel.price}
             />
-        )
+        ) : <Loader/>
         }
       </main>
       {isSearchModalOpen && <Search/>}

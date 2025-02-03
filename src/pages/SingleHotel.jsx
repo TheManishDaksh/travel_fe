@@ -30,7 +30,7 @@ function SingleHotel(){
                 />
                 
         </main>
-        <div className="flex justify-between px-20 pb-5">
+        <div className=" md:flex lg:flex justify-between md:px-2 lg:px-20 pb-5">
         <HotelDetails singleHotel={singleHotel} />
         <FinalPrice singleHotel={singleHotel} />
         </div>
