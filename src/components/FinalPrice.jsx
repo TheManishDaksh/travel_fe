@@ -36,7 +36,7 @@ export const FinalPrice=({singleHotel})=>{
     return(
         <div className="w-full max-w-md mx-auto px-4 sm:px-6 lg:px-0">
       <div className="rounded-xl shadow-lg bg-white border border-slate-200 overflow-hidden">
-        {/* Price and Rating Section */}
+
         <div className="flex justify-between items-center p-4 border-b border-slate-200">
           <div>
             <span className="text-xl font-bold text-slate-800">
@@ -52,7 +52,6 @@ export const FinalPrice=({singleHotel})=>{
           </div>
         </div>
 
-        {/* Date Selection */}
         <div className="grid grid-cols-2 gap-4 p-4 border-b border-slate-200">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -68,7 +67,6 @@ export const FinalPrice=({singleHotel})=>{
           </div>
         </div>
 
-        {/* Guests Input */}
         <div className="p-4 border-b border-slate-200">
           <div className="text-sm font-medium text-slate-700 mb-2">
             Number of Guests
@@ -86,7 +84,6 @@ export const FinalPrice=({singleHotel})=>{
           </div>
         </div>
 
-        {/* Reserve Button */}
         <div className="p-4">
           <button 
             onClick={handleReserveClick}
@@ -111,7 +108,6 @@ export const FinalPrice=({singleHotel})=>{
           </button>
         </div>
 
-        {/* Pricing Breakdown */}
         <div className="p-4 bg-slate-50 border-t border-slate-200">
           <div className="space-y-2">
             <div className="flex justify-between text-sm text-slate-700">

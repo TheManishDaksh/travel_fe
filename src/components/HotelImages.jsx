@@ -12,7 +12,7 @@ function HotelImages({singleHotel}) {
     </div>
     
     <div className='flex flex-col lg:flex-row gap-4'>
-      {/* Primary Image */}
+
       <div className='w-full lg:w-2/3 lg:flex-shrink-0'>
         <img 
           src={image} 
@@ -28,8 +28,7 @@ function HotelImages({singleHotel}) {
           '
         />   
       </div>     
-      
-      {/* Secondary Images Grid */}
+
       <div className='
         grid 
         grid-cols-2 
@@ -66,7 +65,6 @@ function HotelImages({singleHotel}) {
           </div>
         ))}
         
-        {/* Placeholder for additional images if less than 4 */}
         {imageArr && imageArr.length < 4 && 
           Array(4 - imageArr.length).fill().map((_, index) => (
             <div 

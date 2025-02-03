@@ -32,7 +32,7 @@ function Category(){
     return(
         <section className="relative w-full overflow-hidden">
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Left Navigation Button */}
+      
           <button 
             onClick={handleCategoryLeft}
             className="
@@ -51,8 +51,7 @@ function Category(){
           >
             <span className="material-symbols-outlined text-2xl">chevron_left</span>
           </button>
-  
-          {/* Category Scrollable Container */}
+
           <div className="
             flex 
             items-center 
@@ -87,8 +86,7 @@ function Category(){
               </span>
             ))}
           </div>
-  
-          {/* Right Navigation Button */}
+
           <button 
             onClick={handleCategoryRight}
             className="
@@ -108,8 +106,7 @@ function Category(){
             <span className="material-symbols-outlined text-2xl">chevron_right</span>
           </button>
         </div>
-  
-        {/* Mobile Scroll Indicators */}
+
         <div className="
           absolute 
           inset-x-0 

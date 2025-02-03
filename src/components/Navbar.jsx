@@ -28,8 +28,7 @@ function Navbar() {
           TravelO
         </Link>
       </h1>
-      
-      {/* Mobile Menu Toggle (for smaller screens) */}
+
       <div className='md:hidden'>
         <button 
           onClick={handleAuthBtn} 
@@ -40,7 +39,6 @@ function Navbar() {
       </div>
     </div>
     
-    {/* Search Bar - Responsive Layout */}
     <div 
       onClick={handleSearchClick} 
       className='
@@ -90,7 +88,6 @@ function Navbar() {
       </span>
     </div>
     
-    {/* User Section - Responsive */}
     <div className='hidden md:flex items-center space-x-4'>
       {username && (
         <div className='text-slate-700 text-sm'>

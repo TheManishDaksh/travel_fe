@@ -12,7 +12,7 @@ export const HotelDetails = ({ singleHotel }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-slate-800">
-    {/* Host Information */}
+
     <div className="mb-4">
       <p className="text-base md:text-lg font-medium">
         Hosted by {hostName}, Joined on {hostJoinedOn}
@@ -22,7 +22,6 @@ export const HotelDetails = ({ singleHotel }) => {
       </div>
     </div>
 
-    {/* Key Features */}
     <div className="space-y-4 border-b border-slate-300 pb-4">
       {[
         {
@@ -53,7 +52,6 @@ export const HotelDetails = ({ singleHotel }) => {
       </div>
     </div>
 
-    {/* What This Place Offers */}
     <div className="py-4 border-b border-slate-300">
       <p className="text-lg font-semibold mb-4">What this place offers</p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -76,7 +74,6 @@ export const HotelDetails = ({ singleHotel }) => {
       </div>
     </div>
 
-    {/* Health and Safety */}
     <div className="py-4">
       <p className="text-lg font-semibold mb-4">Health And Safety</p>
       <div className="space-y-2">
