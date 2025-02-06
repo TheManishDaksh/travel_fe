@@ -23,26 +23,67 @@ export const AuthModal=()=>{
         })
     }
     return(
-        <div className="w-[100%] h-[100%] top-0 bottom-0 z-20 fixed bg-overlay">
-  <div className="flex flex-col absolute top-4 opacity-100 border-none right-0 gap-4 w-[400px] p-4 font-[1.5rem] rounded-lg">
-  
-    <div className="flex justify-between items-center">
-      <div className={`text-lg ${authToggle === "login" ? "bg-orange-500" : ""}`}>
-        <button onClick={handleLoginBtn}>Login</button>
-      </div>
-      <div className={`text-lg ${authToggle === "signup" ? "bg-orange-500" : ""}`}>
-        <button onClick={handleSignupBtn}>Signup</button>
-      </div>
-      <div className="cursor-pointer pt-1 text-slate-400" onClick={handleCloseBtn}>
-        <span className="material-symbols-outlined">close</span>
+      <div className="fixed inset-0 z-20 bg-overlay flex items-center justify-center p-4 pt-15">
+      <div className="
+        w-full sm:w-[400px] 
+        bg-white 
+        rounded-xl 
+        shadow-2xl 
+        opacity-100 
+        scale-100 
+        transition-all 
+        duration-300
+      ">
+        {/* Header with Auth Toggle */}
+        <div className="relative p-6 pb-2">
+          {/* Close Button */}
+          <button 
+            onClick={handleCloseBtn}
+            className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <span className="material-symbols-outlined">close</span>
+          </button>
+
+          {/* Auth Toggle Buttons */}
+          <div className="flex items-center justify-center gap-8 mt-2">
+            <button
+              onClick={handleLoginBtn}
+              className={`
+                relative pb-2 text-lg font-medium
+                ${authToggle === "login" 
+                  ? "text-primary border-b-2 border-primary" 
+                  : "text-gray-500 hover:text-gray-700"}
+                transition-colors
+              `}
+            >
+              Login
+            </button>
+
+            <button
+              onClick={handleSignupBtn}
+              className={`
+                relative pb-2 text-lg font-medium
+                ${authToggle === "signup" 
+                  ? "text-primary border-b-2 border-primary" 
+                  : "text-gray-500 hover:text-gray-700"}
+                transition-colors
+              `}
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-gray-200"></div>
+
+        {/* Auth Form Container */}
+        <div className="p-6 pt-4">
+          <div className="transition-all duration-300">
+            {authToggle === "login" ? <AuthLogin /> : <AuthSignup />}
+          </div>
+        </div>
       </div>
     </div>
-
-    <div className="mt-4">
-      {authToggle === "login" ? <AuthLogin /> : <AuthSignup />}
-    </div>
-  </div>
-</div>
-
-    )
-}
+  );
+};

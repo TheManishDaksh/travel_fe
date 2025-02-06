@@ -6,6 +6,11 @@ export const dateReducer =(state, {type, payload})=>{
             ...state,
           isSearchModalOpen : !state.isSearchModalOpen
         }
+        case "CLOSE_SEARCH_MODAL" :
+            return {
+                ...state,
+                isSearchModalOpen : false
+            }
         case "CHECK_IN" :
             return {
                 ...state,
