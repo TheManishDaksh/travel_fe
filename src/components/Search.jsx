@@ -75,25 +75,12 @@ export const Search =()=>{
             <div className="w-full h-full fixed inset-0 z-20 bg-overlay overflow-y-auto"> 
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 bg-white hover:bg-gray-100 rounded-full transition-colors"
+                className="absolute top-4 right-4 lg:right-28 p-2 bg-white hover:bg-gray-100 rounded-full transition-colors"
               >
                 <span className="material-symbols-outlined text-gray-600">close</span>
               </button>
         
-              <div className="
-                flex flex-col sm:flex-col md:flex-row lg:flex-row 
-                items-start md:items-center 
-                gap-4 p-4 
-                absolute 
-                top-14 
-                left-0 sm:left-0 md:left-[50%] lg:left-[50%] 
-                transform md:-translate-x-1/2
-                w-full sm:w-[90%] md:w-[90%] lg:w-[80%]
-                mx-auto 
-                bg-white rounded-lg
-                shadow-lg
-                sm:mx-[5%] md:mx-0
-              ">
+              <div className=" flex flex-col sm:flex-col md:flex-row lg:flex-row items-start md:items-center gap-4 p-4 md:gap-6 lg:gap-16 absolute top-14 left-0 sm:left-0 md:left-[50%] lg:left-[50%]  transform md:-translate-x-1/2 w-full sm:w-[90%] md:w-[90%] lg:w-[80%] mx-auto bg-white rounded-lg shadow-lg sm:mx-[5%] md:mx-0">
 
                 <div className="w-full md:w-48 lg:w-48">
                   <label className="text-sm font-medium text-gray-700"> Where </label>
@@ -163,11 +150,11 @@ export const Search =()=>{
                   max-h-[50vh] 
                   overflow-y-auto 
                   absolute 
-                  top-[28rem] sm:top-[28rem] md:top-[10.2rem] lg:top-[7.5rem]
-                  left-[50%] 
+                  top-[28rem] sm:top-[28rem] md:top-[10.2rem] lg:top-[9.7rem]
+                  left-[50%]  
                   transform -translate-x-1/2
                   md:left-[5%] md:translate-x-0
-                  lg:left-[calc(50%-15rem)] lg:translate-x-0
+                  lg:left-[10%] lg:translate-x-0
                   p-3 
                   z-20 
                   rounded-lg

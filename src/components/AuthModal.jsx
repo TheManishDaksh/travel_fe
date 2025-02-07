@@ -34,9 +34,8 @@ export const AuthModal=()=>{
         transition-all 
         duration-300
       ">
-        {/* Header with Auth Toggle */}
+
         <div className="relative p-6 pb-2">
-          {/* Close Button */}
           <button 
             onClick={handleCloseBtn}
             className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
@@ -44,7 +43,6 @@ export const AuthModal=()=>{
             <span className="material-symbols-outlined">close</span>
           </button>
 
-          {/* Auth Toggle Buttons */}
           <div className="flex items-center justify-center gap-8 mt-2">
             <button
               onClick={handleLoginBtn}
@@ -74,10 +72,8 @@ export const AuthModal=()=>{
           </div>
         </div>
 
-        {/* Divider */}
         <div className="w-full h-px bg-gray-200"></div>
 
-        {/* Auth Form Container */}
         <div className="p-6 pt-4">
           <div className="transition-all duration-300">
             {authToggle === "login" ? <AuthLogin /> : <AuthSignup />}

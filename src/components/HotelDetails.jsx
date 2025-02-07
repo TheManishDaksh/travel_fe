@@ -54,7 +54,7 @@ export const HotelDetails = ({ singleHotel }) => {
 
     <div className="py-4 border-b border-slate-300">
       <p className="text-lg font-semibold mb-4">What this place offers</p>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {[
           "Kitchen", 
           "Free parking on premises", 

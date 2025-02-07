@@ -83,7 +83,6 @@ export const AuthLogin = ()=>{
           </div>
         </div>
 
-        {/* Password Input */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Password
@@ -105,14 +104,12 @@ export const AuthLogin = ()=>{
           </div>
         </div>
 
-        {/* Forgot Password Link */}
         <div className="text-right">
           <a href="#" className="text-sm text-primary hover:text-primary/80 transition-colors">
             Forgot Password?
           </a>
         </div>
 
-        {/* Login Button */}
         <div>
           <button
             onClick={handleLoginForm}
@@ -124,7 +121,6 @@ export const AuthLogin = ()=>{
         </div>
       </form>
 
-      {/* Test Credentials Button */}
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-gray-200"></div>

@@ -19,7 +19,6 @@ function HotelCard({hotel}) {
     }
 
     function handleClickFavourite(){
-        if(accessToken){
             if(!hotelInWishlist){
                 wishlistDispatch({
                     type : "ADD_TO_WISHLIST",
@@ -31,11 +30,6 @@ function HotelCard({hotel}) {
                     payload : _id
                 })
             }
-        }else{
-            authDispatch({
-                type : "OPEN_AUTH_MODAL"
-            })
-        }
        
     }
 
@@ -61,7 +55,7 @@ function HotelCard({hotel}) {
         
             <button onClick={handleClickFavourite}
             className='absolute top-2 right-3 bg-transparent p-0 m-0 cursor-pointer'>
-            <span className='overflow-hidden bg-transparent rounded-full'><FavoriteIcon/></span>
+            <span class={`material-symbols-outlined bg-inherit ${hotelInWishlist ? "text-red-500" : ""}`}>favorite</span>
             </button>
         </div>
        

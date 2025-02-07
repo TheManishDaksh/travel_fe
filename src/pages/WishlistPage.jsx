@@ -14,12 +14,13 @@ function WishlistPage() {
   return (
     <div>
         <ShortNav/>
-        <section>
+        <section className="grid py-8 px-10 md:grid-cols-3 lg:grid-cols-4 space-y-8">
             {wishlist.length > 0 ? wishlist.map((hotel)=>(
                 <HotelCard hotel={hotel} />
-            )) : <div>
-                    <div> "Your wishlist is Empty"</div>
-                    <button onClick={handleHomeClick}
+            )) : <div className="flex items-center md:w-[150vh] lg:w-[210vh] flex-col">
+                    <div className="p-4 text-lg font-bold"> "Your wishlist is Empty"</div>
+                    <button className="p-2 bg-orange-500 text-white font-bold rounded-lg"
+                    onClick={handleHomeClick}
                     > Add To Wishlist</button>
                 </div>}
         </section>
